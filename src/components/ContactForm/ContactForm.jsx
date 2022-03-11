@@ -26,7 +26,6 @@ export const ContactForm = () => {
 
   const dispatch = useDispatch();
   const handleSubmit = ({ name, number }, { resetForm }) => {
-    // event.preventDefault();
     const nameInContacts = contacts.find(
       contact => contact.name.toLowerCase() === name.toLowerCase()
     );
