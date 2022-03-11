@@ -7,13 +7,14 @@ import propTypes from 'prop-types';
 
 export const ContactItem = ({ id, name, number }) => {
   const dispatch = useDispatch();
+  const onDeleteContact = id => dispatch(remove(id));
   return (
     <Item>
       <span>{name}:</span>
       <span>{number} </span>
       <IconButton
         aria-label="Delete contact"
-        onClick={() => dispatch(remove(id))}
+        onClick={() => onDeleteContact(id)}
       >
         <DeleteIcon />
       </IconButton>

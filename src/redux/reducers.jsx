@@ -7,9 +7,9 @@ import { add, remove, filterContact } from './actions';
 const initialStateContacts = {
   items: [
     { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-    { id: 'id-2', name: 'Putin Huylo', number: '666-18-03' },
-    { id: 'id-3', name: 'Вася Лаптеногий', number: '645-17-79' },
-    { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
+    { id: 'id-2', name: 'putin Huylo:)', number: '666-18-03' },
+    { id: 'id-3', name: 'Slava Ukraine', number: '123-21-03' },
+    { id: 'id-4', name: 'ramzan DonDon', number: '227-91-26' },
   ],
 };
 const initialStateFilter = {
@@ -17,19 +17,14 @@ const initialStateFilter = {
 };
 
 const contacts = createReducer(initialStateContacts, {
-  [add]: (state, { payload }) => {
-    const contacts = [...state, payload];
-    return contacts;
-  },
-  [remove]: (state, { payload }) => {
-    const contacts = state.filter(({ id }) => id !== payload);
-    return [...contacts];
-  },
+  [add]: (state, { payload }) => [...state, payload],
+
+  [remove]: (state, { payload }) => state.filter(({ id }) => id !== payload),
 });
 
 const filter = createReducer(initialStateFilter, {
-  [filterContact]: ({ keyword }, { payload }) => {
-    keyword = payload;
+  [filterContact]: (state, { payload }) => {
+    state.keyword = payload;
   },
 });
 
