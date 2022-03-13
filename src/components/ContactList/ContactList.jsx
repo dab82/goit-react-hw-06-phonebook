@@ -4,7 +4,7 @@ import { ContactItem } from '../ContactItem/ContactItem';
 import propTypes from 'prop-types';
 
 export const ContactList = () => {
-  const contacts = useSelector(state => state.phonebook.contacts);
+  const contacts = useSelector(state => state.phonebook.contacts.items);
   const filter = useSelector(state => state.phonebook.filter.keyword);
   const getFiltredContacts = () => {
     return filter

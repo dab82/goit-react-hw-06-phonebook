@@ -11,6 +11,7 @@ import propTypes from 'prop-types';
 const initialValues = {
   name: '',
   number: '',
+  filter: '',
 };
 const FormError = ({ name }) => {
   return (
@@ -22,8 +23,7 @@ const FormError = ({ name }) => {
 };
 
 export const ContactForm = () => {
-  const contacts = useSelector(state => state.phonebook.contacts);
-
+  const contacts = useSelector(state => state.phonebook.contacts.items);
   const dispatch = useDispatch();
   const handleSubmit = ({ name, number }, { resetForm }) => {
     const nameInContacts = contacts.find(
@@ -33,7 +33,7 @@ export const ContactForm = () => {
       toast.warn(`${name} is already in contacts`);
       return;
     }
-    const contactO = { id: nanoid(4), name, number };
+    const contactO = { id: nanoid(), name, number };
 
     dispatch(add(contactO));
 

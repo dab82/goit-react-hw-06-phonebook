@@ -17,9 +17,16 @@ const initialStateFilter = {
 };
 
 const contacts = createReducer(initialStateContacts, {
-  [add]: (state, { payload }) => [...state, payload],
+  [add]: (state, action) => {
+    state.items = [action.payload, ...state.items];
+  },
 
-  [remove]: (state, { payload }) => state.filter(({ id }) => id !== payload),
+  [remove]: (state, action) => {
+    const filtredContacts = state.items.filter(
+      contact => contact.id !== action.payload
+    );
+    state.items = filtredContacts;
+  },
 });
 
 const filter = createReducer(initialStateFilter, {
